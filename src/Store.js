@@ -1,4 +1,4 @@
 import { createStore } from 'redux'
 import UserReducer from './UserReducer'
 
-const store = createStore(UserReducer)
+export const store = createStore(UserReducer)
