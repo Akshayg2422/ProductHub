@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { login } from '../features/userSlice';
+import './Login.css'
 
-const LoginPage = ({ onLogin }) => {
+const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
@@ -18,11 +18,10 @@ const LoginPage = ({ onLogin }) => {
         password: password
       })
     )
-
   }
 
   return (
-    <div>
+    <div className='container-login'>
       <h2>Login Page</h2>
       <label>
         Username:
@@ -44,32 +43,4 @@ const LoginPage = ({ onLogin }) => {
   );
 };
 
-const ProductsPage = () => {
-  // You can fetch and display product data here
-  return (
-    <div>
-      <h2>Products List</h2>
-      {/* Display your product data here */}
-    </div>
-  );
-};
-
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  return (
-    <div className="App">
-      {!isLoggedIn ? (
-        <LoginPage onLogin={handleLogin} />
-      ) : (
-        <ProductsPage />
-      )}
-    </div>
-  );
-}
-
-export default App;
+export default Login;
