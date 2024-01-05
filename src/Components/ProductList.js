@@ -50,7 +50,7 @@ function ProductList() {
                         </table>
                     </>
                 ) : (
-                    <div className="d-flex align-items-center text-center">
+                    <div className="loader">
                         Loading...
                     </div>
                 )}
