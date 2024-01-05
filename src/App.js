@@ -18,7 +18,6 @@ function App() {
             <LeftSideMenu />
             <Routes>
               <Route path='/' element={<ProductList />} />
-              <Route path='/ProductList' element={<ProductList />} />
               <Route path='/Profile' element={<Profile />} />
               <Route path='*' element={<h1>No data Found</h1>} />
             </Routes>
