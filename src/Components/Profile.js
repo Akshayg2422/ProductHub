@@ -1,19 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import { selectUser } from '../features/userSlice';
-import Logout from './Logout';
+import { FirstLetterToUpperCase } from '../CommonMethods';
 
 function Profile() {
 
     const user = useSelector(selectUser)
     return (
-        <div className={"container"}>
+        <div className={"border border-dark rounded p-4"}>
             <h1>User Profile</h1>
             <div>
                 <img height={100} width={100} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" alt="User Profile" />
             </div>
             <div>
-                <h3>{user.name}</h3>
+                <h5 className={'mb-0'}>{FirstLetterToUpperCase(user.name)}</h5>
                 <p>{user.email}</p>
             </div>
             <div>

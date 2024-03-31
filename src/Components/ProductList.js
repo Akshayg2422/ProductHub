@@ -1,60 +1,53 @@
 import React, { useEffect, useState } from 'react';
-
-async function fetchProducts() {
-    const response = await fetch('https://fakestoreapi.com/products');
-    const data = await response.json();
-    return data;
-}
+import './ProductList.css'
 
 function ProductList() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await fetchProducts();
-            setProducts(data);
-        };
-
-        fetchData();
+        apiHandler()
     }, []);
 
-    return (
-        <div className={'container'} >
-            <div className={''}>
+    const apiHandler = async () => {
+        const response = await fetch('https://fakestoreapi.com/products')
+        const data = await response.json()
+        setProducts(data)
+    }
 
-                {products.length > 0 ? (
-                    <>
-                        <h1>Product List</h1>
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Price</th>
-                                    <th>Category</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {products.map((el) => {
-                                    const { id, title, price, category } = el;
-                                    return (
-                                        <tr key={id}>
-                                            <td>{id}</td>
-                                            <td>{title}</td>
-                                            <td>{price}</td>
-                                            <td>{category}</td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </>
-                ) : (
-                    <div className="loader">
-                        Loading...
-                    </div>
-                )}
-            </div>
+    return (
+        <div className={'mb-4'}>
+            {products.length > 0 ? (
+                <>
+                    <h1>Product List</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {products.map((el) => {
+                                const { id, title, price, category } = el;
+                                return (
+                                    <tr key={id}>
+                                        <td>{id}</td>
+                                        <td>{title}</td>
+                                        <td>{price}</td>
+                                        <td>{category}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </>
+            ) : (
+                <div style={{ height: '80vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '20px' }}>
+                    Loading...
+                </div>
+            )}
         </div>
     );
 }
